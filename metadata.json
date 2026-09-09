@@ -1,0 +1,6 @@
+{
+  "name": "Video Cấu Trúc Anh–Việt",
+  "description": "Ứng dụng dựng hàng loạt video ngắn 9:16 học cấu trúc Anh–Việt, có hàng đợi máy chủ và khôi phục tiến độ khi quay lại.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

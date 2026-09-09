@@ -1,0 +1,33 @@
+Hãy triển khai PandaStack App từ source trong file ZIP này.
+
+Yêu cầu bắt buộc:
+
+1. Giải nén toàn bộ nội dung ZIP vào thư mục gốc của Git repository. package.json
+   và pandastack.json phải nằm ngay ở thư mục gốc, không nằm trong thư mục con.
+2. Giữ nguyên source, giao diện, bố cục video, giọng đọc và logic hiện có. Đặc
+   biệt giữ nguyên chức năng dán nhiều bài, hàng đợi render phía máy chủ, khôi
+   phục tiến độ theo mã lô và tải toàn bộ bằng ZIP.
+3. Không đổi dự án thành static Vite. Đây là Node full-stack có Express API,
+   Edge TTS và FFmpeg. Phải giữ nguyên pandastack.json với type=node.
+4. Dùng Node 22 theo .nvmrc. Cài dependency bằng npm ci; không chạy npm audit
+   fix và không tự ý nâng phiên bản dependency.
+5. Chạy npm run lint và npm run build. Chỉ deploy khi cả hai lệnh thành công.
+6. Cấu hình PandaStack App:
+   - install_command: npm ci
+   - build_command: npm run build
+   - start_command: npm start
+   - auto_hibernate: false
+   - max_instances: 1
+7. PandaStack tự gán PORT và HOST. Server phải tiếp tục đọc process.env.PORT,
+   lắng nghe trên 0.0.0.0 và không hard-code domain.
+8. Sau khi đổi cấu hình App phải deploy/redeploy để cấu hình có hiệu lực.
+9. Xác nhận GET /api/health trả HTTP 200 và JSON có status=ok.
+10. Xác nhận GET /api/render-batches/missing-test trả HTTP 404.
+11. Mở URL live, kiểm tra giao diện điện thoại 360 px không cuộn ngang và có đủ
+    ba tab: Tạo video, Kho footage, Lịch sử.
+12. Thử dán ít nhất hai bài. Chỉ thông báo hoàn tất sau khi giao diện nhận diện
+    đúng hai bài và request tạo lô trả HTTP 202.
+
+Không thêm Gemini API, Firebase, dịch vụ TTS khác hoặc database nếu tôi không
+yêu cầu. Không bật horizontal autoscaling cho bản hàng đợi dùng bộ nhớ cục bộ
+này.
